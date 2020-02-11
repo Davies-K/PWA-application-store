@@ -9,3 +9,4 @@ This project was created with angular and firebase as backend. It is a PWA for c
 3.  Firebase query snapshots
 4. Firebase Auth
 5. Batch and atomic write by cloud functions
+
