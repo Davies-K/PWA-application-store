@@ -1,0 +1,197 @@
+<div *ngIf="auth.user | async; then authenticated else guest">
+  <!-- template will replace this div -->
+</div>
+
+<ng-template #guest>
+
+    <div class = "header_height d-flex navbar fixed-top ">
+        <div class="mr-auto p-2"> 
+          <!-- [routerLink] ="['/#']" -->
+            <a [routerLink]="['/user']" routerLinkActive="router-link-active"  class="navbar-brand">
+                <img class = "prof_photo" src="https://cdn2.iconfinder.com/data/icons/the-world-faces/512/Cool_Guy_Face_Avatar-512.png" alt="profile_picture" style = "background-image: contain;">
+              </a>
+          <a href ="#home" class="cart_title"></a>
+      
+        </div>
+        
+        
+        <!-- <div >[routerLink] ="['/cart']" -->
+          <div class="p-2">
+              <div class ="wrap">
+                  <!-- <form action="../../app/"> -->
+                    <form action = "../../search">
+                    <!-- <input type ="text" class ="searchTerm" placeholder="I am feeling lucky..."> -->
+                    <!-- <button class="search-clear hide"><i class="fa fa-times" aria-hidden="true"></i></button> -->
+                      <input type="text" (keyup)="onkeyup($event)" class="searchTerm" placeholder=" Search Apps...." list="heroes" >
+                      <!-- <button class = "search_background" (click) = "gotoSearch()"></button> -->
+                      <datalist id="heroes"  >
+                        
+                        
+                          <div *ngFor="let app of results | async"  >
+                            <div>
+                              
+                                  <option id="wmax" value="{{ app.Author}}" >
+                              
+                            
+                                      <li>{{app.Category}}</li>
+                                      
+                                    </option>
+
+                              
+                                  
+
+                             
+                                    
+
+                            </div>
+
+                            
+                              
+                        
+                          </div>
+                          
+                          
+                          
+                        </datalist>
+            
+                  </form>
+
+                  
+                  
+                       <!--<button type = "submit" class="searchButton">
+                       <i class="fa fa-search"></i>
+                       </button>-->
+                </div> 
+                
+                
+                
+
+
+                
+
+                
+            <!-- <div class='icon social fb'><i class='fa fa-snapchat'></i></div>
+              <div class='icon social tw'><i class='fa fa-twitter'></i></div>
+              <div class='icon social in'><i class='fa fa-github'></i></div>
+              <div class='icon social in'><i class='fa fa-area-chart'></i></div> -->
+        </div>
+
+        <div class="p-2">
+
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon matTooltip="Profile Details" >more_vert</mat-icon>
+             
+              
+              <mat-menu #menu="matMenu" >
+                      <button mat-menu-item>
+                        <mat-icon matBadge="3" matBadgeColor="primary">account_balance_wallet</mat-icon>
+                        <span>Installed Apps</span>
+                      </button>
+                      <button mat-menu-item [matMenuTriggerFor]="categories">
+                        <mat-icon>favorite</mat-icon>
+                        <span>Categories</span>
+                      </button>
+                      
+                      <button mat-menu-item>
+                          <mat-icon matBadge="15" matBadgeColor="warn">notifications_off</mat-icon>
+                          <span>Notifications</span>
+                      </button>
+                      <button mat-menu-item [routerLink] ="['/user-profile']">
+                        <mat-icon>account_circle</mat-icon>
+                        <span>Update Profile</span>
+                      </button>
+                      <button mat-menu-item disabled>
+                          <mat-icon>verified_user</mat-icon>
+                          <span>User Verified</span>
+                      </button>
+                    </mat-menu>
+
+
+                    <mat-menu #categories="matMenu">
+                        <button mat-menu-item><span [routerLink]="['/entertainment']" routerLinkActive="router-link-active" >Entertainment</span></button>
+                        <button mat-menu-item><span [routerLink]="['/education']" routerLinkActive="router-link-active" >Education</span></button>
+                        <button mat-menu-item><span>Physics</span></button>
+                        <button mat-menu-item><span>Technology</span></button>
+                        <button mat-menu-item><span>Virtual Apps</span></button>
+                        <button mat-menu-item><span>Research</span></button>
+                        <button mat-menu-item><span>Business</span></button>
+                        <button mat-menu-item><span>Arts</span></button>
+                        <button mat-menu-item><span>Anatomy</span></button>
+                      </mat-menu>
+                   
+                   
+            
+          </button>
+
+          </div>
+      </div>
+      
+
+
+</ng-template>
+
+
+<ng-template #authenticated>
+    <div *ngIf="auth.user | async as user">
+
+        <div class = "header_height d-flex justify-content-between navbar fixed-top ">
+            <div> 
+              <!-- [routerLink] ="['/#']" -->
+                <a (click)="goToUser()" class="navbar-brand">
+                  <!-- <img class = "prof_photo" [src]="user.photoURL" alt="profile_picture" style = "background-image: contain;"> -->
+                    <img class = "prof_photo" src="https://cdn2.iconfinder.com/data/icons/the-world-faces/512/Cool_Guy_Face_Avatar-512.png" alt="profile_picture" style = "background-image: contain;">
+                  </a>
+              <a href ="#home" class="cart_title"></a>
+          
+            </div>
+            
+            <div > 
+              <div class ="wrap">
+                <form>
+                  <input type ="text" class ="searchTerm" placeholder="I am feeling lucky...">
+                  <!-- <button class="search-clear hide"><i class="fa fa-times" aria-hidden="true"></i></button> -->
+                    <!-- <input type="text" (keyup)="onkeyup($event)" class="searchTerm" placeholder=" I am feeling lucky...." list="heroes"> -->
+                    <!-- <datalist id="heroes"  >
+                        <div *ngFor="let book of results | async"  >
+                          <div [routerLink]="['/book/',book.id]">
+                              <option id="wmax" value="{{ book.Author }}"  >
+                          
+                                  <li>{{book.Category}}</li>
+                                  
+                                </option>
+                                
+                      
+                          </div>
+                            
+                      
+                        </div>
+                        
+                        
+                        
+                      </datalist> -->
+          
+                </form>
+                
+                     <!--<button type = "submit" class="searchButton">
+                     <i class="fa fa-search"></i>
+                     </button>-->
+              </div>
+            </div>
+            <!-- <div >[routerLink] ="['/cart']" -->
+              <div>
+                  <!-- <div class='icon social fb'><i class='fa fa-snapchat'></i></div>
+                  <div class='icon social tw'><i class='fa fa-twitter'></i></div>
+                  <div class='icon social in'><i class='fa fa-github'></i></div>
+                  <div class='icon social in'><i class='fa fa-area-chart'></i></div> -->
+            </div>
+          </div>
+
+      </div>
+
+    
+      
+
+
+</ng-template>
+
+

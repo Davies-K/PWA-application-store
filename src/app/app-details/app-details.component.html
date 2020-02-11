@@ -1,0 +1,266 @@
+<div class="arrow">
+  <img (click)= "goBack()" src="https://img.icons8.com/ios/50/000000/long-arrow-left-filled.png">
+</div>
+
+<div class="details_app">
+    <div class="wrapper">
+        
+        <div class="one">
+          <img src = "{{ ( item | async)?.image}}" class="thumbnail"/>
+        </div>
+        <div class="two">
+          <h4 class = "author">{{ ( item | async)?.Author}} <span class=" ratings_badge badge--product-title">4+</span> </h4>
+          <span>{{ ( item | async)?.Category}}</span>
+          <div>
+    
+                
+                <span id="NAM1"></span>
+
+                
+
+                <span>
+                  
+                </span>
+
+                
+          </div>
+         
+          
+          
+          <p id="description_txt">Portentous, perhaps, but Mary Shelley's subtitle to Frankenstein</p>
+          <!-- <div class="heart"></div> -->
+          <div class="middle-wrapper ">
+              <div id="btn-download">
+                  <a href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/172905/test.pdf">
+                  <svg width="22px" height="16px" viewBox="0 0 22 16">
+                    <path d="M2,10 L6,13 L12.8760559,4.5959317 C14.1180021,3.0779974 16.2457925,2.62289624 18,3.5 L18,3.5 C19.8385982,4.4192991 21,6.29848669 21,8.35410197 L21,10 C21,12.7614237 18.7614237,15 16,15 L1,15" id="check"></path>
+                    <polyline points="4.5 8.5 8 11 11.5 8.5" class="svg-out"></polyline>
+                    <path d="M8,1 L8,11" class="svg-out"></path>
+                </svg>
+              </a>
+                </div>
+                
+                
+            
+              <!-- <span id="GetFile">
+                  <img src="https://img.icons8.com/color/32/000000/download-2.png">
+              </span>
+               -->
+            </div>
+
+            
+        </div>
+        
+        
+      </div>
+      <hr>
+      <div class="details_carousel">
+    
+          <div class="scrolling-wrapper " >
+            <div class="shape1" *ngFor="let item of screeny">
+              
+                  <img src = "{{ item.image}}"  class="shape1"/>
+
+              
+              
+
+              
+          </div>  
+         </div>
+  
+      
+      
+  
+    </div>
+    <hr class="colored" />
+
+
+    <div>
+        <span class="description">Description</span>
+        <p id="sub_descrptn">{{ ( item | async )?.subtitle}}</p>
+      
+    </div>
+    <hr>
+
+
+
+      <div class="row" *ngIf="item">
+
+          <div class="column">
+              <h3>Ratings and Reviews</h3>
+              <div>
+                  <div class="we-customer-ratings__averages" *ngIf="Rate">
+                    <span class="we-customer-ratings__averages__display">{{New_avg | number: '1.0-1'}}</span> out of 5
+                  </div>
+      
+                    
+      
+      
+              </div>
+              <mat-list>
+                  <mat-list-item *ngFor="let comment of item.comments">
+                    <p matLine id="description_txt"> {{comment.comment}} </p>
+                    
+                    <p matLine id="description_txt_bold"> {{comment.rating}} Stars</p>
+                    <p matLine id="description_txt_bold">
+                      <span> -- {{comment.name}}, {{comment.updatedAt?.toDate() | date : 'medium' }} </span>
+                    </p>
+                  </mat-list-item>
+                </mat-list>
+          </div>
+          <div class="column">
+              <form novalidate [formGroup]="commentForm" #cform="ngForm" (ngSubmit)="onSubmit()">
+              
+                  <fieldset class="rating" >
+                      <ng-container  *ngFor="let num of [5, 4, 3, 2, 1]">
+                          
+                          <input  
+                                [id]="'star'+num"
+                                [value]="num-0.5"
+                                formControlName="rating" 
+                                type="radio" />
+                    
+                          <label class="full" [for]="'star'+num"></label>
+                    
+                        
+                          <input  
+                                 [value]="num-0.5"
+                                 [id]="'halfstar'+num" 
+                                 formControlName="rating" 
+                                 type="radio"  />
+                    
+                          <label class="half" [for]="'halfstar'+num"></label>
+                    
+                      </ng-container>
+                    </fieldset>
+               
+                <mat-form-field class="full-width">
+                  <textarea class="textarea" matInput formControlName="comment" placeholder="Let's know how you feel..." rows=12></textarea>
+                  <mat-error *ngIf="formErrors.comment">{{formErrors.comment}}</mat-error>
+                </mat-form-field>
+              
+              <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="commentForm.invalid">Submit</button>
+            </form>
+          </div>
+        </div>
+
+        <hr>
+
+      <div class="d-flex justify-content-between toolbar_title">
+  
+        <div><p class="toolbar_header">Similar Apps</p></div>
+        <div><p class="toolbar_more">See more<span><i class="fa fa-angle-right icn_right"></i></span></p></div>
+      </div>
+    
+    <div class="scrolling-wrapper">
+        <div class="app_card">
+          <div class="card_head">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/51hKyr0it6L.png"/>
+      
+          </div>
+          <div class="card_body">
+            <div class="body_txt">
+              <p class="toolbar_header">Photos</p>
+      
+            </div>
+            <div class="body_txt">
+                <p class="category_txt">Social</p>
+        
+              </div>
+              <div class="body_txt">
+                  <span class="product-rating">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </span>
+          
+                </div>
+      
+          </div>
+          
+      
+        </div>
+      
+        <div class="app_card">
+            <div class="card_head">
+              <img src="http://logok.org/wp-content/uploads/2015/02/Evernote-logo-2018-640x512.png"/>
+        
+            </div>
+            <div class="card_body">
+              <div class="body_txt">
+                <p class="toolbar_header">Evernote</p>
+        
+              </div>
+              <div class="body_txt">
+                  <p class="category_txt">Education</p>
+          
+                </div>
+                <div class="body_txt">
+                    <span class="product-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star grey"></i>
+                      </span>
+            
+                  </div>
+        
+            </div>
+            
+        
+          </div>
+    
+          
+      </div>
+
+      <hr>
+
+      <div class="d-flex justify-content-between toolbar_title">
+  
+        <div><p class="toolbar_header">Apps by Author</p></div>
+        <div><p class="toolbar_more">See more<span><i class="fa fa-angle-right icn_right"></i></span></p></div>
+      </div>
+
+      <div class="scrolling-wrapper">
+        <div class="app_card">
+          <div class="card_head">
+            <img src="http://logok.org/wp-content/uploads/2015/02/Evernote-logo-2018-640x512.png"/>
+      
+          </div>
+          <div class="card_body">
+            <div class="body_txt">
+              <p class="toolbar_header">Evernote</p>
+      
+            </div>
+            <div class="body_txt">
+                <p class="category_txt">Education</p>
+        
+              </div>
+              <div class="body_txt">
+                  <span class="product-rating">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star grey"></i>
+                    </span>
+          
+                </div>
+      
+          </div>
+          
+      
+        </div>
+      </div>
+
+
+      
+      
+
+
+</div>
+
+

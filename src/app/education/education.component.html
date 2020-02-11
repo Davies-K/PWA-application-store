@@ -1,0 +1,38 @@
+<div class="arrow">
+  <img (click)= "goBack()" src="https://img.icons8.com/ios/50/000000/long-arrow-left-filled.png">
+</div> 
+ 
+<div class="wrapper">
+    <div class="app_card"  *ngFor ="let item of items | async" [routerLink]="['/app/',item.id]">
+      <div class="card_head">
+        <img src="{{item.image}}"/>
+  
+      </div>
+      <div class="card_body">
+        <div class="body_txt">
+          <p class="toolbar_header">{{item.Author}}</p>
+  
+        </div>
+        <div class="body_txt">
+            <p class="category_txt">{{item.Category}}</p>
+    
+          </div>
+          <div class="body_txt">
+              <span class="product-rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star grey"></i>
+                </span>
+      
+            </div>
+  
+      </div>
+      
+  
+    </div>
+
+  
+  
+</div>

@@ -1,0 +1,237 @@
+div {
+    font-family: 'Montserrat';
+}
+
+body {
+    font-family: 'Montserrat';
+}
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    font-family: 'Montserrat';
+    
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.prof_photo{
+    height: 38px;
+    width:42px;
+    border-radius: 25px;
+}
+
+
+.stretched_tabs{
+min-width: 250px;
+}
+
+span {
+    font-size: 18px;
+}
+   
+#nav_near_pagetitle{
+    font-family: 'Montserrat';
+    font-weight:600;
+    float:left;
+    margin-top:15px;
+    font-size: x-large;
+}
+
+#page_title{
+  
+    font-size:75px;
+    font-weight:800;
+    font-family: 'Sans-serif';
+}
+
+button {
+    cursor: pointer;
+    outline: 0;
+  }
+
+.header_height {
+    height: 75px;
+    
+    
+    align-content: center;
+    align-items: center;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    background: #ffffff;
+    
+    
+
+
+}
+
+
+
+.cart_title {
+    font-family: 'Montserrat';
+    font-weight: bold;
+    color: black;
+    font-size: 21px;
+    display: inline-block;
+
+}
+
+.searchTerm {
+    width: 400px;
+    border-radius: 4px;
+    height: 35px;
+    font-size: 19px;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    border: 1px;
+    color: black;
+    
+    background:white;
+    padding-left: 25px;
+  
+    
+}
+
+
+#wmax {
+    width: 750px;
+    border-radius: 5px;
+    height: 35px;
+    font-size: 18px;
+    margin-left: 150px;
+    background: #ffffff;
+    padding-left: 25px;
+
+}
+
+
+.no_space_below {
+    margin-bottom: -12px;
+    margin-top: 22px;
+}
+
+.material-icons{
+    margin-top: 3px;
+}
+
+
+/*tabs*/
+span {
+    font-family: 'Montserrat';
+}
+
+
+
+.badge_circle {
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    background-color: #f35e3d;;
+    align-items : center;
+    text-align: center; 
+    vertical-align: middle;
+    color: white;
+    font-size: 7px;
+    display: inline-block;
+    margin-right: -6px;
+    margin-top: -12px;
+    z-index : 10;
+
+}
+
+.nav-brand {
+    cursor: pointer;
+}
+
+/* icon on the right */
+
+.icon {
+	position:relative;
+	text-align:center;
+	width:0px;
+	height:0px;
+	padding:8px;
+	border-radius: 15px;
+	-moz-border-radius: 		20px 20px 20px 20px;
+	-webkit-border-radius: 		20px 20px 20px 20px;
+	-khtml-border-radius: 		20px 20px 20px 20px; 	
+	color:#FFFFFF;
+}
+.icon i {
+	font-size:15px;
+	position:absolute;
+	
+	top:1px;
+}
+.icon.social {
+	float:left;
+	margin:0 8px 0 0;
+	cursor:pointer;
+	background:rgb(27, 27, 27) ;
+	color:whitesmoke;
+	transition: 0.5s;
+	-moz-transition: 0.5s;
+	-webkit-transition: 0.5s;
+	-o-transition: 0.5s; 	
+}
+
+
+.icon.social:hover {
+	background:#262626 ;
+	color:#6d6e71;
+	transition: 0.5s;
+	-moz-transition: 0.5s;
+	-webkit-transition: 0.5s;
+	-o-transition: 0.5s;
+	-webkit-filter:	drop-shadow(0 1px 10px rgba(0,0,0,.8));
+	-moz-filter: 	drop-shadow(0 1px 10px rgba(0,0,0,.8));
+	-ms-filter: 		drop-shadow(0 1px 10px rgba(0,0,0,.8));
+	-o-filter: 		drop-shadow(0 1px 10px rgba(0,0,0,.8));
+	filter: 			drop-shadow(0 1px 10px rgba(0,0,0,.8));	 	
+}
+.icon.social.fb i {
+	left:2.3px;
+	top:2px;
+}
+.icon.social.tw i {
+	left:2px;
+  
+}
+.icon.social.in i {
+	left:2px;
+}
+
+
+.suggest_box {
+    width: 780px;
+    height: 330px;
+    
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    border: 1px
+    
+  }
+
+input:focus {
+    outline: none !important;
+    border:1px solid linear-gradient(to right, #0ED2F7, #B2FEFA);;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+
+.search_background {
+    background: url("https://loading.io/spinners/bricks/lg.block-rotate-loading-gif.gif");
+    background-size : contain;
+    background-repeat: no-repeat;
+    height: 28px;
+    width: 28px;
+
+
+margin-left: 10px;
+
+
+color: white;
+
+
+}
+

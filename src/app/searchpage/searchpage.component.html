@@ -1,0 +1,97 @@
+<!-- <div class= "justify-content-center" style = "margin: 50px;">
+  <h4>Search with Keyword</h4>
+  <div class ="wrap">
+                  
+                    <form >
+                    
+                      <input type="text" (keyup)="onkeyup($event)" class="searchTerm" placeholder=" Search Apps...." list="heroes" >
+                     
+                      <datalist id="heroes"  >
+                        
+                        
+                          <div *ngFor="let app of results | async"  >
+                            <div>
+                              
+                                  <option id="wmax" value="{{ app.Author}}" >
+                              
+                            
+                                      <li>{{app.Category}}</li>
+                                      
+                                    </option>
+
+                            </div>
+
+                          </div>
+        
+                        </datalist>
+       
+                  </form>
+            
+                </div> 
+
+</div>
+ -->
+
+ <div class="arrow">
+  <img (click)= "goBack()" src="https://img.icons8.com/ios/50/000000/long-arrow-left-filled.png">
+</div>
+
+
+<div class= "justify-content-center" style = "margin: 50px;">
+  <h4>Search and Filter Apps by Category</h4>
+  <p>Click on any button to filter to that attribute.</p>
+  <button (click)="filterByCategory('Entertainment')">Entertainment</button>
+  <button (click)="filterByCategory('Social')">Social</button>
+  <button (click)="filterByCategory('Education')">Education</button>
+  <button (click)="filterByCategory('Productivity')">Productivity</button>
+  
+  
+</div>
+
+
+
+<hr>
+
+
+<div *ngIf="items$ | async; let items;">
+  <div class="wrapper">
+    <div class="app_card"  *ngFor ="let item of items" [routerLink]="['/app/',item.id]">
+      <div class="card_head">
+        <img src="{{item.image}}"/>
+  
+      </div>
+      <div class="card_body">
+        <div class="body_txt">
+          <p class="toolbar_header">{{item.Author}}</p>
+  
+        </div>
+        <div class="body_txt">
+            <p class="category_txt">{{item.Category}}</p>
+    
+          </div>
+          <div class="body_txt">
+              <span class="product-rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star grey"></i>
+                </span>
+      
+            </div>
+  
+      </div>
+      
+  
+    </div>
+
+  
+  
+</div>
+  
+</div>
+
+    
+
+
+
