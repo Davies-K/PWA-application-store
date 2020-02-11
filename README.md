@@ -15,3 +15,5 @@ This project was created with angular and firebase as backend. It is a PWA for c
 ![alt text](https://github.com/Davies-K/PWA-application-store/blob/master/App%20page.JPG)
 
 ![alt text](https://github.com/Davies-K/PWA-application-store/blob/master/All%20apps.JPG)
+
+![alt text](https://github.com/Davies-K/PWA-application-store/blob/master/user.JPG)
