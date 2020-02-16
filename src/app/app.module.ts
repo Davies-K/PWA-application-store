@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+// Angular routing module
 import { AppRoutingModule } from './app-routing.module';
+
+// import components used
 import { AppComponent } from './app.component';
 import { BrowseComponent } from './browse/browse.component';
 import { UiModule } from './ui/ui.module';
@@ -14,27 +16,23 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list'
-
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatBadgeModule} from '@angular/material/badge';
-
 import "hammerjs";
-
 import { 
   MatTableModule, 
   MatSortModule, 
   MatDialogModule, 
 } from '@angular/material';
-
 import {MatInputModule} from '@angular/material';
 
+// importing form modules from angular forms
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 
