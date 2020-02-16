@@ -4,6 +4,8 @@ import { Component, OnInit, ViewEncapsulation, } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+
+// import rxjs libraries
 import { Observable } from 'rxjs';
 import { Url } from 'url';
 import { map } from 'rxjs/operators';
@@ -23,17 +25,20 @@ export class BrowseComponent implements OnInit {
   items: Observable<any[]>;
   allItems: any;
 
+  // this helps us switch between showing the page loader on and off
   showSpinner: boolean = true;
 
 
-  constructor(private afs: AngularFirestore) { 
+  constructor(private afs: AngularFirestore ) { 
+    // itemcollection for angularfirestore
     this.itemCollection = afs.collection<Item>('Apps');
   }
 
   ngOnInit() {
 
     
-
+    // get snapshots for all items from angularfirestore(Apps) collection
+    // snpshot option from firebase actually gets all data and ids for all items
     this.items = this.itemCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Item;
@@ -43,15 +48,15 @@ export class BrowseComponent implements OnInit {
       }))
     );
 
-
-    
-
-
+    // Subscribe from rxjs. This method subscribes to all snapshot data
+    // from the above object
     this.items.subscribe ( items => {
       this.allItems = items;
       console.log(this.allItems);
     });
 
+
+    // When any data is received from the subscription the showspinner should disapper
     this.items.subscribe(() => this.showSpinner=false);
 
   }

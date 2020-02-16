@@ -27,6 +27,8 @@ export class EducationComponent implements OnInit {
   allItems: any;
 
   constructor(db: AngularFirestore, private location: Location ) { 
+
+    // subscribe to snapshot data from this collection
     this.items = db.collection('/Apps', ref => ref.where ('Category','==','Education'))
     .snapshotChanges().pipe(
       map(actions => actions.map(a => {

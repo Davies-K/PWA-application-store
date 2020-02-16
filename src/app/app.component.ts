@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(){
+
+    // jquery function to print date to the app component page
     $(document).ready(function(){
       var d = new Date();
      document.getElementById("date_txt").innerHTML = d.toDateString();

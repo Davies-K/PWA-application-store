@@ -1,30 +1,41 @@
 import { Component, OnInit,ViewEncapsulation, ViewChild } from '@angular/core';
 import { ActivatedRoute,Params, Router } from '@angular/router';
+
+// import firestore from angularfire library
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+
+// import rxjs methods
 import { map } from 'rxjs/operators';
-import { FirebaseService } from '../services/firebase.service';
-import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+
+// import the firebaseService file from ./services
+import { FirebaseService } from '../services/firebase.service';
+
+// angular library for Forms
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+// Angular navigation library
 import { Location } from '@angular/common';
 
-
+// import jquery
 import * as $ from 'jquery';
 
-import { AuthService } from '../core/auth.service';
+// imports from firebase
 import * as firebase from 'firebase/app';
-
 import { AngularFireAuth } from '@angular/fire/auth';
 
 export interface Item { Author: string; Category: string;  comments: Comment[]; screenshots: Screenshot[]; rating: number; }
 export interface ItemId extends Item { id: string;  }
+
+// Comments interface
 export class Comment {
   rating: number;
   comment: string;
   name: string;
   date: string;
 }
+
+// Screenshot interface objects
 export class Screenshot {
   image: string;
 }
@@ -36,6 +47,7 @@ export class Screenshot {
   styleUrls: ['./app-details.component.css']
 })
 export class AppDetailsComponent implements OnInit {
+
 
   item;
   app;
@@ -66,6 +78,7 @@ export class AppDetailsComponent implements OnInit {
   Vals;
   New_avg;
   Ratings;
+
 
   @ViewChild('cform') commentFormDirective;
   items: Item;
@@ -103,9 +116,10 @@ export class AppDetailsComponent implements OnInit {
   ngOnInit() {
 
     
-
+// function that creates Form from formbuilder
     this.createForm();
 
+    // subscribe to all the subcollections and snapshots of item
     this.route.params.pipe(switchMap((params: Params) => { this.visibility = 'hidden'; 
     return this.afs.getApp(params['id']); }))
     .subscribe(dish => {
@@ -142,7 +156,7 @@ export class AppDetailsComponent implements OnInit {
 
   
 
-
+// jquery to animate and download from url
   $(document).ready(function(){
     $("#btn-download").click(function() {
       $(this).toggleClass("downloaded");
@@ -172,6 +186,8 @@ export class AppDetailsComponent implements OnInit {
   })
 
 }
+
+// function to create the form
 createForm() {
   this.commentForm = this.fb.group({
     rating: 5,
@@ -184,6 +200,8 @@ createForm() {
   this.onValueChanged(); // (re)set validation messages now
 }
 
+
+// // (re)set validation messages now
 onValueChanged(data?: any) {
   if (!this.commentForm) { return; }
   const form = this.commentForm;
@@ -204,8 +222,12 @@ onValueChanged(data?: any) {
   }
 }
 
+
+// itemId 
 ItemId: string = this.route.snapshot.paramMap.get('id');
 
+
+// function to post comment on this page
 postComment(ItemId: string, comment: any): Promise<any> {
   if (this.currentUser) {
     return this.db.collection('Apps').doc(this.ItemId).collection('comments')
@@ -229,6 +251,8 @@ postComment(ItemId: string, comment: any): Promise<any> {
   }
 }
 
+// get star ratings from subcollection ('comments') for this itemId
+
 getAppStars(ItemId: string){
   const starsRef =this.db.collection('Apps').doc(this.ItemId).collection('comments');
   return starsRef.snapshotChanges().pipe(
@@ -241,7 +265,7 @@ getAppStars(ItemId: string){
 }
 
 
-
+// function to submit comments and ratings
 onSubmit() {
   this.postComment(this.item, this.commentForm.value)
     .then(() => {
@@ -258,6 +282,8 @@ onSubmit() {
  
 }
 
+
+// subscribe to ratings offered the item
 getStars(rating: number) {
 
   // Round to nearest half
@@ -279,6 +305,8 @@ getStars(rating: number) {
 
 }
 
+
+// navigate to previous location
 goBack(): void {
    
   this.location.back();
@@ -287,7 +315,7 @@ goBack(): void {
 
 
 
-
+// unsubscribe to all methods and objects when page closes
 ngOnDestroy() {
   this.item.unsubscribe;
 }

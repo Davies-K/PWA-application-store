@@ -27,6 +27,8 @@ export class EntertainmentComponent implements OnInit {
   allItems: any;
 
   constructor(db: AngularFirestore, private location: Location ) { 
+
+    // subscribe to snapshots data 
     this.items = db.collection('/Apps', ref => ref.where ('Category','==','Entertainment'))
     .snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -40,6 +42,7 @@ export class EntertainmentComponent implements OnInit {
   ngOnInit() {
   }
 
+  // navigate to previous page
   goBack(): void {
    
     this.location.back();

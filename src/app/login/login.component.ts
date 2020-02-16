@@ -12,7 +12,7 @@ import * as $ from 'jquery';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  
   constructor(public auth: AuthService) { }
 
   ngOnInit() {
